@@ -24,23 +24,25 @@ export default function TextForm(props) {
   //setText("new text")
   return (
     <>
-    <div className='conrainer'>   
+    <div className='conrainer' style={{color: props.mode==='dark' ? 'white' : '#042743'}}>   
 
       <h1>{props.heading}</h1>
       <div className="mb-3">  
-        <textarea className="form-control" value ={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
+        <textarea className="form-control" value ={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark' ? 'grey' : 'white',
+          color: props.mode==='dark' ? 'white' : '#042743'}}
+        id="mybox" rows="8"></textarea>
       </div>
       <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to uppercase</button>
       <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to lowercase</button>
       <button className="btn btn-primary mx-2" onClick={handleClear}>Clear text</button>
     </div>
-    <div className="container my-2">
+    <div className="container my-2 "style={{color: props.mode==='dark' ? 'white' : '#042743'}}>
       <h1>your text summary</h1>
 
       <p>{text.split(" ").length} words,{text.length} characters</p>
       <p>{0.008 * text.split(" ").length} Minutes read</p>
       <h2>Preview</h2>
-      <p>{text}</p>
+      <p>{text.length>0?text:"Enter text to preview"}</p>
       </div>
     </>
   );
